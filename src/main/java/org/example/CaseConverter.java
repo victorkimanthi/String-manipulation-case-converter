@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 public class CaseConverter {
     public static String convertCase(String sentence, String caseType) {
-        String[] words = sentence.split(" ");
+        String newSentence = sentence.replaceAll("[,.']","");
+
+        String[] words = newSentence.split(" ");
         StringBuilder convertedSentence = new StringBuilder();
 
         for (int i = 0; i < words.length; i++) {
@@ -44,13 +46,14 @@ public class CaseConverter {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a sentence");
-        String sentence = scanner.nextLine();
-        System.out.println("Enter the case");
-        String desiredCase = scanner.next();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Enter a sentence");
+            String sentence = scanner.nextLine();
+            System.out.println("Enter the desired case.Choose among (camelCase, snakecase, kebab-case, PascalCase and UPPER_CASE_SNAKE_CASE)");
+            String desiredCase = scanner.next();
 
-        String convertedSentence = convertCase(sentence, desiredCase);
-        System.out.println(convertedSentence);
+            String convertedSentence = convertCase(sentence, desiredCase);
+            System.out.println(convertedSentence);
+        }
     }
 }
