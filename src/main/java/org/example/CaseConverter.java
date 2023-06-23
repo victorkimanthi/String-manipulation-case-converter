@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class CaseConverter {
     public static String convertCase(String sentence, String caseType) {
+//        update the sentence and replace the regex
         String newSentence = sentence.replaceAll("[,.']","");
 
         String[] words = newSentence.split(" ");
